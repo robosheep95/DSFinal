@@ -1,26 +1,33 @@
 class myCell():
 	def __init__(self):
 		self.pos = []
-		self.x = 0
-		self.y = 0
+		self.col = 0
+		self.row = 0
+		self.answer = 0
 	
 	def setRow(self, x):
-		self.x = x
+		self.row = x
 	
 	def setCol(self, y):
-		self.y = y
+		self.col = y
 		
 	def getRow(self):
-		return self.x
+		return self.row
 	
 	def getCol(self):
-		return self.y
+		return self.col
 		
 	def getBox(self, box):
 		self.box = box
 	
 	def setBox(self):
 		return self.box
+	
+	def setAnswer(self,value)
+		self.answer = value
+		
+	def getAnswer(self)
+		return self.answer
 		
 	def getPos(self):
 		return self.pos
