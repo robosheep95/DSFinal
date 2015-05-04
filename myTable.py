@@ -24,19 +24,18 @@ class myTable()
         #returns List at x and y of list table
         cell =getPos(table[(x+(9*(y-1)))])
         return cell
+        
+    def fill(self):
+    	for cell in self:
+    		if cell.getAnwser == None:
+    			for value in range(1,10):
+    				if cell.check(cell,value) == True:
+    					cell + value
 
-    def check(self,number):
-        if number in line(number):
-            return False
-        if number in coloum(number):
-            return False
-        return True
-    
-    def line(self,table):
-        y = table.getLine
-        for i in range((9*(y-1)+1),(9*(y-1)+9)+1)
-    
-    
-    def column(self,table):
-        x = table.getColumn
-    
+    def check(self,cell,value):
+    	for checkCell in self():
+    		if (checkCell.getRow() == cell.getRow() or checkCell.getCol == cell.getCol() or checkCell.getBox() == cell.getBox) and value in checkCell.getPos():
+    			return False
+    		else:
+    			return True
+    			
