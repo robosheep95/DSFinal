@@ -10,24 +10,33 @@
 
 
 #To find certian x and y
+class myTable()
+	def __init__(self):
+		self = [0]
+		for i in range(1,82):
+			cell = myCell()
+			cell.setRow(((i-1)//9)+1))
+			cell.setCol(i-((cell.getRow()-1)*9))
+			cell.setBox(((((cell.getRow()-1)//3)+1)*3)-(3-(((cell.getCol()-1)//3)+1)))
+			self.append(cell)
 
-def getSpace(x,y,table):
-    #returns List at x and y of list table
-    space = table[(x+(9*(y-1)))]
-    return space
+    def getPos(self,x,y):
+        #returns List at x and y of list table
+        cell =getPos(table[(x+(9*(y-1)))])
+        return cell
 
-def check(self,number):
-    if number in line():
-        return False
-    if number in coloum():
-        return False
-    return True
-
-def line(self,table):
-    y = table.getLine
-    for i in range((9*(y-1)+1),(9*(y-1)+9)+1)
-
-
-def coloum():
-
-
+    def check(self,number):
+        if number in line(number):
+            return False
+        if number in coloum(number):
+            return False
+        return True
+    
+    def line(self,table):
+        y = table.getLine
+        for i in range((9*(y-1)+1),(9*(y-1)+9)+1)
+    
+    
+    def column(self,table):
+        x = table.getColumn
+    
