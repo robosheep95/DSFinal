@@ -33,9 +33,23 @@ class myTable()
     					cell + value
 
     def check(self,cell,value):
-    	for checkCell in self():
+    	for checkCell in self:
     		if (checkCell.getRow() == cell.getRow() or checkCell.getCol == cell.getCol() or checkCell.getBox() == cell.getBox) and value in checkCell.getPos():
     			return False
     		else:
     			return True
+    
+    def single(self):
+    	done = True
+    	for cell in self:
+    		if len(cell.getPos) == 1
+    		done = False
+    		cell.setAnwser = cell.getPos[0]
+    		cell.removeCheck(cell,cell.getAnwser())
+    	return done
+    	
+    def removeCheck(self,cell,value)
+    	for checkCell in self:
+    		if (checkCell.getRow() == cell.getRow() or checkCell.getCol == cell.getCol() or checkCell.getBox() == cell.getBox) and value in checkCell.getPos():
+    			checkCell - value
     			
