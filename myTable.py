@@ -27,7 +27,7 @@ class myTable()
         
     def fill(self):
     	for cell in self:
-    		if cell.getAnwser == None:
+    		if cell.getAnswer == None:
     			for value in range(1,10):
     				if cell.check(cell,value) == True:
     					cell + value
@@ -44,8 +44,8 @@ class myTable()
     	for cell in self:
     		if len(cell.getPos) == 1
     		done = False
-    		cell.setAnwser = cell.getPos[0]
-    		cell.removeCheck(cell,cell.getAnwser())
+    		cell.setAnswer(str(cell.getPos[0]))
+    		cell.removeCheck(cell,cell.getAnswer())
     	return done
     	
     def removeCheck(self,cell,value)
