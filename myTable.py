@@ -10,12 +10,12 @@
 
 
 #To find certian x and y
-class myTable()
+class myTable():
 	def __init__(self):
 		self = [0]
 		for i in range(1,82):
 			cell = myCell()
-			cell.setRow(((i-1)//9)+1))
+			cell.setRow(((i-1)//9)+1)
 			cell.setCol(i-((cell.getRow()-1)*9))
 			cell.setBox(((((cell.getRow()-1)//3)+1)*3)-(3-(((cell.getCol()-1)//3)+1)))
 			self.append(cell)
@@ -42,13 +42,13 @@ class myTable()
     def single(self):
     	done = True
     	for cell in self:
-    		if len(cell.getPos) == 1
-    		done = False
-    		cell.setAnswer(str(cell.getPos[0]))
-    		cell.removeCheck(cell,cell.getAnswer())
+    		if len(cell.getPos) == 1:
+    			done = False
+    			cell.setAnswer(str(cell.getPos[0]))
+    			cell.removeCheck(cell,cell.getAnswer())
     	return done
     	
-    def removeCheck(self,cell,value)
+    def removeCheck(self,cell,value):
     	for checkCell in self:
     		if (checkCell.getRow() == cell.getRow() or checkCell.getCol == cell.getCol() or checkCell.getBox() == cell.getBox) and value in checkCell.getPos():
     			checkCell - value
