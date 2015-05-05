@@ -23,10 +23,10 @@ class myCell():
 	def setBox(self):
 		return self.box
 	
-	def setAnswer(self,value)
+	def setAnswer(self,value):
 		self.answer = value
 		
-	def getAnswer(self)
+	def getAnswer(self):
 		return self.answer
 		
 	def getPos(self):
