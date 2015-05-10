@@ -18,19 +18,11 @@ class myCell():
     def getCol(self):
         return self.col
             
-<<<<<<< HEAD
     def setBox(self, box):
         self.box = box
     
     def getBox(self):
         return self.box
-=======
-    def getBox(self, box):
-        return self.box
-    
-    def setBox(self):
-        self.box = box
->>>>>>> origin/master
     
     def setAnswer(self,value):
         self.answer = value
