@@ -24,9 +24,9 @@ class myTable():
             cell = myCell()
             cell.setRow(((i-1)//9)+1)
             cell.setCol(i-((cell.getRow()-1)*9))
-            #cell.setBox(((((cell.getRow()-1)//3)+1)*3)-(3-(((cell.getCol()-1)//3)+1)))
+            cell.setBox(((((cell.getRow()-1)//3)+1)*3)-(3-(((cell.getCol()-1)//3)+1)))
             self.board.append(cell)
-        self.fill(self.board)
+        ##self.fill(self.board)
 
 ##    def getPos(self,x,y):
 ##        #returns List at x and y of list table
@@ -35,38 +35,49 @@ class myTable():
         
     def fill(self,board):
         for cell in board:
-            cell.pos= []
             if cell.getAnswer() == 0:
                 for value in range(1,10):
-                    if self.check(cell,value,board) == True:
+                    if self.check(cell.getRow(),cell.getCol(),cell.getBox(),value,board):
                         cell.add(value)
 
-    def check(self,cell,value,board):
-        for checkCell in board:
-            if (checkCell.getRow() == cell.getRow() or checkCell.getCol == cell.getCol() ) and value == checkCell.getAnswer():
+    def check(self,row,col,box,value,board):
+        for cell in board:
+            #print("{},{},{},{}".format(checkCell.getRow(),checkCell.getCol(),checkCell.getBox(),value))
+            #print("{},{},{}".format(cell.getRow(),cell.getCol(),cell.getBox()))
+            if row == cell.getRow() and value == cell.getAnswer():
                 return False
-            else:
-                return True
-    
-    def single(self):
-        done = True
-        for cell in self:
-            if len(cell.getPos) == 1:
-                done = False
-                cell.setAnswer(str(cell.getPos[0]))
-                cell.removeCheck(cell,cell.getAnswer())
-        return done
+            elif col == cell.getCol() and value == cell.getAnswer():
+                return False
+            elif box == cell.getBox() and value == cell.getAnswer():
+                return False
+                        
+        else:
+            return True
+
         
-    def removeCheck(self,cell,value):
-        for checkCell in self:
-            if (checkCell.getRow() == cell.getRow() or checkCell.getCol == cell.getCol() or checkCell.getBox() == cell.getBox) and value in checkCell.getPos():
-                checkCell - value
+    def single(self,board):
+        if not done:
+            done = True
+            for cell in board:
+                if len(cell.getPos) == 1:
+                    done = False
+                    cell.setAnswer(str(cell.getPos[0]))
+                    cell.removeCheck(cell.getRow(),cell.getCol(),cell.getBox(),cell,cell.getAnswer(),board)
+        
+    def removeCheck(self,row,col,box,value,board):
+        for cell in board:
+            if row == cell.getRow() and value == cell.getAnswer():
+                cell.removePos(value)
+            elif col == cell.getCol() and value == cell.getAnswer():
+                cell.removePos(value)
+            elif box == cell.getBox() and value == cell.getAnswer():
+                cell.removePos(value)
 
     def setCell(self, row, col, value):
-            for i in range(0,81):
+            for i in range(1,82):
                 if self.board[i].getRow() == row and self.board[i].getCol() == col:
                     self.board[i].setAnswer(value)
-                    self.fill(self.board)
+                    self.board.removeCheck(i,value)
 
     def sortMinPos(self):
         self.sort(len(pos))

@@ -3,6 +3,7 @@ class myCell():
         self.pos = []
         self.col = 0
         self.row = 0
+        self.box = 0
         self.answer = 0
 
     def setRow(self, x):
@@ -17,10 +18,10 @@ class myCell():
     def getCol(self):
         return self.col
             
-    def getBox(self, box):
+    def setBox(self, box):
         self.box = box
     
-    def setBox(self):
+    def getBox(self):
         return self.box
     
     def setAnswer(self,value):
