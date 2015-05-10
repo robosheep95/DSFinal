@@ -3,6 +3,7 @@ class myCell():
         self.pos = []
         self.col = 0
         self.row = 0
+        self.box = 0
         self.answer = 0
 
     def setRow(self, x):
@@ -18,10 +19,10 @@ class myCell():
         return self.col
             
     def getBox(self, box):
-        self.box = box
+        return self.box
     
     def setBox(self):
-        return self.box
+        self.box = box
     
     def setAnswer(self,value):
         self.answer = value
@@ -32,13 +33,13 @@ class myCell():
     def getPos(self):
         return self.pos
     
-    def add(self, inp):
+    def addPos(self,inp):
         if inp not in self.pos:
             self.pos.append(inp)
         else:
             pass
-            
-    def __sub__(self, inp):
+    
+    def removePos(self, inp):
         if inp in self.pos:
             self.pos.remove(inp)
         else:
