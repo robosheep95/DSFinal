@@ -67,3 +67,7 @@ class myTable():
                 if self.board[i].getRow() == row and self.board[i].getCol() == col:
                     self.board[i].setAnswer(value)
                     self.fill(self.board)
+
+    def sortMinPos(self):
+        self.sort(len(pos))
+        return self
