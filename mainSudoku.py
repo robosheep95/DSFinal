@@ -2,9 +2,12 @@ from myTable import *
 from myStack import *
 
 def solve(table,stack):
+    """recusive function that uses a backtracking method to solve the sudoku puzzle"""
     table.simple(table.board)
+    #Base Case 1
     if table.isBad(table.board):
         solve(stack.pop())
+    #Base Case 2
     elif table.isFinished(table.board):
         return board
     else:
