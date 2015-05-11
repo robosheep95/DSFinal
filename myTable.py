@@ -17,7 +17,7 @@ class myTable():
 
 
         
-    def __init__(self):
+    def __init__(self,newdata):
         self.board = []
         for i in range(1,82):
             cell = myCell()
@@ -25,7 +25,13 @@ class myTable():
             cell.setCol(i-((cell.getRow()-1)*9))
             cell.setBox(((((cell.getRow()-1)//3)+1)*3)-(3-(((cell.getCol()-1)//3)+1)))
             self.board.append(cell)
-            #self.fill(self.board)
+        #newdata = input("Space seperated list, use 0 for unknown\n").split()
+        count = 0
+        newdata = newdata.split()
+        for cell in self.board:
+            cell.setAnswer(int(newdata[count]))
+            count +=1
+
 
 ##    def getPos(self,x,y):
 ##        #returns List at x and y of list table
@@ -121,7 +127,7 @@ class myTable():
         return True
 
 ####main
-##t = myTable()
+t = myTable()
 ##t.board[0].setAnswer(6)
 ##t.board[1].setAnswer(0)
 ##t.board[2].setAnswer(7)
@@ -204,13 +210,11 @@ class myTable():
 ##t.board[79].setAnswer(0)
 ##t.board[80].setAnswer(2)
 ##
-##t.fill(t.board)
-##for cell in t.board:
-##    print(cell.getPos())
-##print()
-##t.solve(t.board)
-##for cell in t.board:
-##    print(cell.getPos())
-##
-##
-##
+t.fill(t.board)
+for cell in t.board:
+    print(cell.getPos())
+print()
+t.simple(t.board)
+for cell in t.board:
+   print(cell.getPos())
+
