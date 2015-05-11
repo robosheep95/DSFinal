@@ -31,7 +31,10 @@ class myCell():
         return self.answer
             
     def getPos(self):
-        return self.pos
+        return list(self.pos)
+
+    def setPos(self,inp):
+        self.pos = inp
     
     def addPos(self,inp):
         if inp not in self.pos:
