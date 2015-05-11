@@ -44,3 +44,6 @@ class myCell():
             self.pos.remove(inp)
         else:
             pass
+
+    def getLen(self):
+        return len(self.getPos())
