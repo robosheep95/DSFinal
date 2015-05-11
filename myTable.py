@@ -1,5 +1,5 @@
 from myCell import *
-
+from myStack import *
 ##01 02 03 04 05 06 07 08 09
 ##10 11 12 13 14 15 16 17 18
 ##19 20 21 22 23 24 25 26 27
@@ -20,13 +20,14 @@ class myTable():
         
     def __init__(self):
         self.board = []
+        self.stack = myStack()
         for i in range(1,82):
             cell = myCell()
             cell.setRow(((i-1)//9)+1)
             cell.setCol(i-((cell.getRow()-1)*9))
             cell.setBox(((((cell.getRow()-1)//3)+1)*3)-(3-(((cell.getCol()-1)//3)+1)))
             self.board.append(cell)
-        ##self.fill(self.board)
+            #self.fill(self.board)
 
 ##    def getPos(self,x,y):
 ##        #returns List at x and y of list table
@@ -39,7 +40,6 @@ class myTable():
                 for value in range(1,10):
                     if self.check(cell.getRow(),cell.getCol(),cell.getBox(),value,board):
                         cell.addPos(value)
-
     def check(self,row,col,box,value,board):
         for cell in board:
             #print("{},{},{},{}".format(checkCell.getRow(),checkCell.getCol(),checkCell.getBox(),value))
@@ -55,7 +55,7 @@ class myTable():
             return True
 
         
-    def single(self,board):
+    def solve(self,board):
         done = False
         while not done:
             done = True
@@ -64,6 +64,14 @@ class myTable():
                     done = False
                     cell.setAnswer(cell.getPos()[0])
                     self.removeCheck(cell.getRow(),cell.getCol(),cell.getBox(),cell.getAnswer(),board)
+        if done:
+            if self.isBad(board):
+                self.solve(self.stack.pop())
+                
+            if self.isFinished(board):
+                return board
+            else:
+                self.guess(board)
         
     def removeCheck(self,row,col,box,value,board):
         for cell in board:
@@ -74,16 +82,34 @@ class myTable():
             elif box == cell.getBox() and value in cell.getPos():
                 cell.removePos(value)
 
-    def setCell(self, row, col, value):
-            for i in range(1,82):
-                if self.board[i].getRow() == row and self.board[i].getCol() == col:
-                    self.board[i].setAnswer(value)
-                    self.removeCheck(i,value)
-
     def sortMinPos(self,board):
         board.sort(key = lambda cell: cell.getLen())
         return board
 
+    def guess(self,board):
+        for cell in board:
+            if cell.getLen > 0:
+                for i in cell.getPos():
+                    cell.setAnswer(cell.getPos()[i])
+                    self.removeCheck(cell.getRow(),cell.getCol(),cell.getBox(),cell.getAnswer(),board)
+                    print("hey")
+                    self.stack.push(board)
+        self.solve(stack.pop())
+
+    def isBad(self,board):
+        for cell in board:
+            print(cell.getAnswer(), cell.getLen())
+            if cell.getAnswer() == 0 and cell.getLen() == 0:
+                return True
+        return False
+
+
+    def isFinished(self,board):
+        print("isFinished")
+        for cell in board:
+            if cell.getAnswer() == 0:
+                return False
+        return True
 ##main
 t = myTable()
 t.board[0].setAnswer(0)
@@ -168,13 +194,6 @@ t.board[78].setAnswer(1)
 t.board[79].setAnswer(2)
 t.board[80].setAnswer(0)
 t.fill(t.board)
+t.solve(t.board)
 for cell in t.board:
-    print (cell.getPos())
-t.single(t.board)
-print()
-for cell in t.board:
-    print (cell.getPos())
-t.sortMinPos(t.board)
-print()
-for cell in t.board:
-    print (cell.getPos())
+    print(cell.getPos())

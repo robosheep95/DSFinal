@@ -4,7 +4,7 @@ Programmer: Taylor Scafe
 2/23/2014
 """
 
-class Stack():
+class myStack():
     def __init__(self):
         self.items = []
 
