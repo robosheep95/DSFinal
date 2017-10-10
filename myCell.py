@@ -31,7 +31,7 @@ class myCell():
         return self.answer
             
     def getPos(self):
-        return list(self.pos)
+        return (self.pos)
 
     def setPos(self,inp):
         self.pos = inp

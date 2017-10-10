@@ -3,6 +3,7 @@ Sudoku Solver
 Taylor Scafe, Jordan Huddleston
 May 11, 2015
 """
+import copy
 
 ##01 02 03 04 05 06 07 08 09
 ##10 11 12 13 14 15 16 17 18
@@ -89,15 +90,15 @@ class myTable():
     def guess(self,board):
         """Breaks cells that have two possibilites into two seperate tables. Then solves."""
         self.sortMinPos(self.board)
-        output1 = board[:]
-        output2 = board[:]
+        output1 = copy.copy(board)
+        output2 = copy.copy(board)
         for cell in output1:
             if cell.getLen()>0:
-                print(cell.getPos())
+#                #print(cell.getPos())
                 cell.setPos(cell.getPos()[0])   
         for cell in output2:
             if cell.getLen()>0:
-                print(cell.getPos())
+#                #print(cell.getPos())
                 cell.setPos(cell.getPos()[1])
         return(output1,output2)
         
@@ -118,16 +119,16 @@ class myTable():
 
 ####main
     
-string1 = "0 0 2 1 8 0 0 6 5 0 7 0 9 0 0 8 0 0 6 3 0 0 0 2 0 0 1 5 0 0 6 2 0 7 0 0 7 9 0 0 0 0 0 4 2 0 0 4 0 1 9 0 0 8 8 0 0 2 0 0 0 9 3 0 0 6 0 0 5 0 8 0 4 2 0 0 7 3 1 0 0"
-string2 = "0 2 0 0 9 0 0 6 0 9 0 3 0 0 0 4 0 1 0 0 1 4 0 3 7 0 0 3 0 0 7 0 6 0 0 5 0 0 0 2 0 9 0 0 0 8 0 0 5 0 1 0 0 2 0 0 9 8 0 4 1 0 0 6 0 5 0 0 0 9 0 8 0 4 0 0 1 0 0 3 0"
-string3 = "0 0 0 8 0 0 0 0 2 5 0 0 7 0 0 8 0 9 0 0 2 0 0 0 0 0 6 1 0 0 0 5 0 2 9 0 0 0 0 4 0 8 0 0 0 0 4 3 0 9 0 0 0 1 3 0 0 0 0 0 9 0 0 9 0 6 0 0 1 0 0 8 8 0 0 0 0 6 0 0 0"
+#string1 = "0 0 2 1 8 0 0 6 5 0 7 0 9 0 0 8 0 0 6 3 0 0 0 2 0 0 1 5 0 0 6 2 0 7 0 0 7 9 0 0 0 0 0 4 2 0 0 4 0 1 9 0 0 8 8 0 0 2 0 0 0 9 3 0 0 6 0 0 5 0 8 0 4 2 0 0 7 3 1 0 0"
+#string2 = "0 2 0 0 9 0 0 6 0 9 0 3 0 0 0 4 0 1 0 0 1 4 0 3 7 0 0 3 0 0 7 0 6 0 0 5 0 0 0 2 0 9 0 0 0 8 0 0 5 0 1 0 0 2 0 0 9 8 0 4 1 0 0 6 0 5 0 0 0 9 0 8 0 4 0 0 1 0 0 3 0"
+#string3 = "0 0 0 8 0 0 0 0 2 5 0 0 7 0 0 8 0 9 0 0 2 0 0 0 0 0 6 1 0 0 0 5 0 2 9 0 0 0 0 4 0 8 0 0 0 0 4 3 0 9 0 0 0 1 3 0 0 0 0 0 9 0 0 9 0 6 0 0 1 0 0 8 8 0 0 0 0 6 0 0 0"
 
-t = myTable(string3)
-t.fill(t.board)
-for cell in t.board:
-    print(cell.getPos())
-print()
-t.simple(t.board)
-for cell in t.board:
-   print(cell.getPos())
+#t = myTable(string3)
+#t.fill(t.board)
+#for cell in t.board:
+#    print(cell.getPos())
+#print()
+#t.simple(t.board)
+#for cell in t.board:
+#   print(cell.getPos())
 
